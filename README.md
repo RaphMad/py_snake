@@ -11,7 +11,7 @@ The project is not tailored towards any specific IDE, although I personally used
 
 ## Run
 
-* Execute the main file **app.py** within **Pipenv** by running `pipenv run python app.py`
+* Execute the main file **main.py** within **Pipenv** by running `pipenv run python main.py`
 * Note that most IDEs come with their own means of executing python files.
 
 ## License
