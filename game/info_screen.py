@@ -13,7 +13,6 @@ class InfoScreen:
         font = pygame.font.Font('freesansbold.ttf', 32)
         renderedText = font.render(text, True, (0, 255, 0))
         rectangle = renderedText.get_rect()
-        rectangle.center = (self.surface.get_width() // 2,
-                            self.surface.get_height() // 2)
+        rectangle.center = (self.surface.get_width() // 2, self.surface.get_height() // 2)
 
         self.surface.blit(renderedText, rectangle)

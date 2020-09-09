@@ -20,11 +20,8 @@ pygame.init()
 pygame.display.set_caption("PySnake")
 
 window = pygame.display.set_mode((size, header_size + size))
-board = Board(window.subsurface(pygame.Rect(
-    0, header_size, size, size)), blocks_per_side
-)
-info_screen = InfoScreen(window.subsurface(
-    pygame.Rect(0, 0, size, header_size)))
+board = Board(window.subsurface(pygame.Rect(0, header_size, size, size)), blocks_per_side)
+info_screen = InfoScreen(window.subsurface(pygame.Rect(0, 0, size, header_size)))
 snake = Snake(board, 10, 10, Direction.RIGHT)
 
 
