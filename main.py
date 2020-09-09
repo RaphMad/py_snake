@@ -40,17 +40,15 @@ def game_loop():
         pygame.display.update()
         events = pygame.event.get()
 
-        if (events):
-            events.reverse()
-            for eventType in eventHandlers:
-                # only process the last event of a given type (e.g. only the last keypress in case of multiple ones)
-                last_event_of_type = next(
-                    (x for x in events if x.type == eventType),
-                    None
-                )
+        for eventType in eventHandlers:
+            # only process the last event of a given type (e.g. only the last keypress in case of multiple ones)
+            last_event_of_type = next(
+                (x for x in reversed(events) if x.type == eventType),
+                None
+            )
 
-                if (last_event_of_type):
-                    eventHandlers[eventType](last_event_of_type)
+            if (last_event_of_type):
+                eventHandlers[eventType](last_event_of_type)
 
         clock.tick(20)
 
@@ -72,14 +70,14 @@ def quitGame(_):
 def change_snake_facing(keydown_Event: pygame.event):
     global snake
 
-    if (keydown_Event.key == pygame.K_UP):
-        snake.face(Direction.UP)
-    elif (keydown_Event.key == pygame.K_DOWN):
-        snake.face(Direction.DOWN)
-    elif (keydown_Event.key == pygame.K_LEFT):
-        snake.face(Direction.LEFT)
-    elif (keydown_Event.key == pygame.K_RIGHT):
-        snake.face(Direction.RIGHT)
+    keyToDirection = {
+        pygame.K_UP: Direction.UP,
+        pygame.K_DOWN: Direction.DOWN,
+        pygame.K_LEFT: Direction.LEFT,
+        pygame.K_RIGHT: Direction.RIGHT,
+    }
+
+    snake.face(keyToDirection[keydown_Event.key])
 
 
 game_loop()
